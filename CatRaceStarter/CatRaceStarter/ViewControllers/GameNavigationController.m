@@ -7,11 +7,20 @@
 //
 
 #import "GameNavigationController.h"
-
-@interface GameNavigationController ()
-
-@end
+#import "GameKitHelper.h"
 
 @implementation GameNavigationController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(showAuthenticationViewController)
+     name:PresentAuthenticationViewController
+     object:nil];
+    
+    [[GameKitHelper sharedGameKitHelper]
+     authenticateLocalPlayer];
+}
 @end

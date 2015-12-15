@@ -8,11 +8,14 @@
 
 @import GameKit;
 
+extern NSString *const PresentAuthenticationViewController;
+
 @interface GameKitHelper : NSObject
 
 @property (nonatomic, readonly) UIViewController *authenticationViewController;
 @property (nonatomic, readonly) NSError *lastError;
 
 + (instancetype)sharedGameKitHelper;
+- (void)authenticateLocalPlayer;
 
 @end
